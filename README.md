@@ -1,59 +1,135 @@
-# FileManagerApp
+# 📁 File Manager App (Angular + AWS)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+A cloud-based file upload and management application built using **Angular** and deployed on **AWS EC2**, with **Amazon S3** used for scalable and secure file storage.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Live Demo
 
-```bash
-ng serve
+👉 http://44.220.95.125/
+
+---
+
+## 🛠 Tech Stack
+
+* **Frontend:** Angular, TypeScript
+* **Cloud:** AWS EC2, Amazon S3
+* **Server:** Nginx
+* **Other:** IAM, CORS Configuration
+
+---
+
+## 📌 Features
+
+* Upload files directly to cloud storage (S3)
+* Secure file handling using AWS IAM policies
+* Fast and responsive UI with Angular
+* Scalable cloud-based architecture
+* CORS-enabled secure communication
+* Production deployment on EC2
+
+---
+
+## 🏗 Architecture
+
+```
+User (Browser)
+     ↓
+Angular Frontend (EC2 - Nginx)
+     ↓
+Backend / API (if applicable)
+     ↓
+Amazon S3 (File Storage)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ☁️ AWS Services Used
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 🔹 EC2 (Elastic Compute Cloud)
 
-```bash
-ng generate component component-name
-```
+* Hosted Angular application
+* Configured Nginx for serving the app
+* Managed inbound traffic using security groups
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 🔹 Amazon S3
 
-```bash
-ng generate --help
-```
+* Stored uploaded files
+* High durability and scalability
+* Public/controlled access via bucket policies
 
-## Building
+### 🔹 IAM (Identity and Access Management)
 
-To build the project run:
+* Controlled access between EC2 and S3
+* Secured file upload permissions
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## ⚙️ Deployment Steps
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### 1. Build Angular App
 
 ```bash
-ng test
+ng build --configuration production
 ```
 
-## Running end-to-end tests
+### 2. Setup EC2 Instance
 
-For end-to-end (e2e) testing, run:
+* Launch EC2 (Ubuntu)
+* Install Node.js & Nginx
+* Configure security groups (HTTP/HTTPS)
+
+### 3. Deploy to EC2
 
 ```bash
-ng e2e
+scp -r dist/ ubuntu@<EC2-IP>:/var/www/html
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 4. Configure Nginx
 
-## Additional Resources
+* Point root to Angular build folder
+* Enable routing support
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 5. Setup S3
+
+* Create bucket
+* Configure CORS
+* Add bucket policy
+
+---
+
+## 🔐 Security Configurations
+
+* IAM roles for secure AWS access
+* S3 bucket policies for controlled file access
+* CORS configuration for frontend integration
+
+---
+
+## 📸 Screenshots
+
+*Add screenshots here:*
+
+* Upload UI
+* Successful upload
+* S3 bucket files view
+
+---
+
+## 📈 Future Improvements
+
+* Add authentication (JWT)
+* File preview support
+* Drag-and-drop upload
+* Progress bar for uploads
+
+---
+
+## 👨‍💻 Author
+
+**Manikandan G**
+
+* LinkedIn: https://linkedin.com/in/manikandan-g-dev23051996
+* GitHub: https://github.com/mani143gg
+
+---
